@@ -1,17 +1,24 @@
-
-#map {
-  height: 200px;
-  flex: 0 0 500px;
-  position: sticky !important;
-  top: 0px !important;
+body {
+  background-color: white;
 }
-// Specific CSS for your home-page
 
 h1, p {
-	text-align: center;
-	color: blue;
+  text-align: center;
+  color: blue;
 }
 
 h1 {
-	font-size: 70px;
+  font-size: 70px;
+}
+
+.container {
+  align-items: stretch;
+  width: 90%;
+}
+
+#map {
+  height: 500px;
+  flex: 0 0 500px;
+  position: sticky !important;
+  top: 0px !important;
 }

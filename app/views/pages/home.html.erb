@@ -1,5 +1,20 @@
-
-<div id="pages">
-	<h1>WelcomeMap</h1>
-	<div id="map" data-markers="<%= @markers.to_json %>"></div>
+<div class="container">
+  	<h1>SoliMap</h1>
+    <h3>Search by Category:</h3>
+    <%= form_tag(home_path, method: :get) do %>
+      <%= text_field_tag(:search, params[:search]) %>
+      <%= submit_tag ("Search")} %>
+    <% end %>
+<!--     <input type="text" id="service_address" placeholder="Search..">
+ -->    <div class="row">
+  	<div class="col-xs-12 col-md-8" id="map" data-markers="<%= @markers.to_json %>"></div>
+    <div class="col-xs-12 col-md-4"><p>FILTERS GO HERE</p></div>
+  </div>
+  <div class="row">
+    <% @services.each do |service| %>
+      <%= service.name %> <br>
+    <% end %>
+  </div>
 </div>
+
+
