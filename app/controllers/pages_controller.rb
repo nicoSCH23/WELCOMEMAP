@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   def home
-    @services = Service.where.not(latitude: nil, longitude: nil) #rajouté selection de status approved si necessaire
+    @categories = Service.distinct.pluck(:category)
+    @services = Service.search(params)
     @markers = @services.map do |service|
       {
         lat: service.latitude,

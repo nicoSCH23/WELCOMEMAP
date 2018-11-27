@@ -1,14 +1,23 @@
 <div class="container">
   	<h1>SoliMap</h1>
-    <h3>Search by Category:</h3>
-    <%= form_tag(home_path, method: :get) do %>
-      <%= text_field_tag(:search, params[:search]) %>
-      <%= submit_tag ("Search")} %>
-    <% end %>
+
 <!--     <input type="text" id="service_address" placeholder="Search..">
  -->    <div class="row">
   	<div class="col-xs-12 col-md-8" id="map" data-markers="<%= @markers.to_json %>"></div>
-    <div class="col-xs-12 col-md-4"><p>FILTERS GO HERE</p></div>
+    <div class="col-xs-12 col-md-4">
+      <h3>Categories:</h3>
+      <%= form_tag(root_path, method: :get) do %>
+        <ul>
+          <% @categories.each do |category| %>
+            <li>
+            <%= check_box_tag "category[]", category, checked = true %>
+            <%= category %>
+            </li>
+          <% end %>
+        </ul>
+        <%= submit_tag("Search", class: "btn btn-primary") %>
+      <% end %>
+    </div>
   </div>
   <div class="row">
     <% @services.each do |service| %>
