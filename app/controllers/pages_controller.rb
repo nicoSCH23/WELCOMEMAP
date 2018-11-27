@@ -1,10 +1,11 @@
 class PagesController < ApplicationController
   def home
-    @markers = @bodies.select {|b| !b.latitude.nil? }.map do |body|
+    @services = Service.all #rajouté selection de status approved si necessaire
+    @markers = @services.select {|b| !b.lat.nil? }.map do |service|
       {
-        lat: body.latitude,
-        lng: body.longitude,
-        infoWindow: { content: render_to_string(partial: "/bodies/map_box", locals: { body: body }) }
+        lat: service.lat,
+        lng: service.long,
+        # infoWindow: { content: render_to_string(partial: "/bodies/map_box", locals: { body: body }) }
       }
     end
   end
