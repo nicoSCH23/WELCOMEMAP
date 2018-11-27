@@ -1,5 +1,5 @@
 <div class="container">
-  	<h1>SoliMap</h1>
+  	<h2>SoliMap</h2>
 
 <!--     <input type="text" id="service_address" placeholder="Search..">
  -->    <div class="row">
@@ -10,20 +10,50 @@
         <ul>
           <% @categories.each do |category| %>
             <li>
-            <%= check_box_tag "category[]", category, checked = true %>
-            <%= category %>
+              <input type="checkbox" class="hidden" value="<%= category %>" name="category[]" id="<%= category %>">
+              <label class="category-option btn btn-chore btn-small btn-block" for="<%= category %>">
+                 <%= render partial: 'components/category_card', locals: { category: category } %>
+              </label>
             </li>
           <% end %>
         </ul>
-        <%= submit_tag("Search", class: "btn btn-primary") %>
+        <div class="submit-search-container">
+          <%= submit_tag("Search", class: "btn btn-primary") %>
+        </div>
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <% @services.each do |service| %>
-      <%= service.name %> <br>
-    <% end %>
+
+  <div class="row col-xs-12 col-md-8 col-md-offset-2 container card-presentation">
+    <div class="card-header">
+      <h4>All services available:</h4>
+    </div>
+    <div class="card-content">
+      <table>
+        <thead>
+          <tr>
+            <th class="t-left">Service</th>
+            <th>Phone</th>
+            <th>Hours</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @services.each do |service| %>
+            <tr>
+              <td class="t-left"><%= service.name %></td>
+              <td><%= service.phone %></td>
+              <td><%= service.hour %></td>
+              <td><%= service.address %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+
+
 
 
