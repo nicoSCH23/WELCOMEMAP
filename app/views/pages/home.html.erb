@@ -14,8 +14,8 @@
         <ul>
           <% @categories.each do |category| %>
             <li>
-              <label class="category-option btn btn-chore btn-small btn-block" id="label-<%= category.split.first %>" for="<%= category.split.first %>">
-                 <%= check_box_tag "category[]", category, @params[:category].include?(category), id: category.split.first, class: "category-checkbox", style: 'visibility: hidden' %>
+              <label class="category-option btn btn-chore btn-small btn-block" id="label-<%= category.id %>" for="<%= category.id %>">
+                 <%= check_box_tag "category_ids[]", category.id, @catids_selected.include?(category.id), id: category.id, class: "category-checkbox", style: 'visibility: hidden' %>
                  <%= render partial: 'components/category_card', locals: { category: category } %>
               </label>
             </li>
@@ -27,27 +27,32 @@
       <% end %>
     </div>
   </div>
+  <div>
+    <% @services.each do |service| %>
+      <%= service.name %>
+    <% end %>
+  </div>
 
-  <div class="row col-xs-12 col-md-8 container card-presentation">
+<!--   <div class="row col-xs-12 col-md-8 container card-presentation">
     <div>
       <h4 class="result-title">Results</h4>
     </div>
     <div>
 
-      <% @params[:category].each do |category| %>
-        <button class="category-list active btn btn-chore btn-small btn-block" type="button" data-toggle="collapse" data-target="#collapse<%= category.split.first %>" aria-expanded="false" aria-controls="collapse<%= category.split.first %>">
-            <%= image_tag "#{category.split.first}.png", height: 25, class: "category-icon" %>
+      <%# @params[:category_ids].each do |category_id| %>
+        <button class="category-list active btn btn-chore btn-small btn-block" type="button" data-toggle="collapse" data-target="#collapse<%#= category_id %>" aria-expanded="false" aria-controls="collapse<%#= category_id %>">
+            <%#= cl_image_tag Category.find(category_id).icon, height: 25, class: "category-icon" %>
             <span class="category-name">
-              <%= category %>
+              <%#= Category.find(category_id).name %>
             </span>
         </button>
-        <div class="collapse in" id="collapse<%= category.split.first %>">
-            <% @services.where(category: category).each do |service| %>
-              <%= render partial: 'components/service_card', locals: { service: service } %>
-            <% end %>
+        <div class="collapse in" id="collapse<%#= category_id %>">
+            <%# @services.where(category: category).each do |service| %>
+              <%#= render partial: 'components/service_card', locals: { service: service } %>
+            <%# end %>
         </div>
-      <% end %>
+      <%# end %>
 
     </div>
-  </div>
+  </div> -->
 </div>

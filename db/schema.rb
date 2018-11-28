@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_162513) do
+ActiveRecord::Schema.define(version: 2018_11_28_145643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "identif"
+  end
+
+  create_table "service_categories", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "service_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_service_categories_on_category_id"
+    t.index ["service_id"], name: "index_service_categories_on_service_id"
+  end
 
   create_table "services", force: :cascade do |t|
     t.string "name"
@@ -23,10 +40,11 @@ ActiveRecord::Schema.define(version: 2018_11_27_162513) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
     t.string "status"
     t.float "longitude"
     t.float "latitude"
   end
 
+  add_foreign_key "service_categories", "categories"
+  add_foreign_key "service_categories", "services"
 end
