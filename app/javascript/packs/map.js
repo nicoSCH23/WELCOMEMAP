@@ -15,6 +15,7 @@
 //   }
 // }
 
+console.log("COUCOU from maps")
 
 
 const styles = [
