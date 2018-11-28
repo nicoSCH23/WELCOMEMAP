@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.4.4'
 
 gem 'jquery-rails'
+gem 'cloudinary', '~> 1.9.1'
 gem 'geocoder'
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
