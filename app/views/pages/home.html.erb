@@ -10,8 +10,8 @@
         <ul>
           <% @categories.each do |category| %>
             <li>
-              <input type="checkbox" class="hidden" value="<%= category %>" name="category[]" id="<%= category %>">
-              <label class="category-option btn btn-chore btn-small btn-block" for="<%= category %>">
+              <label class="category-option btn btn-chore btn-small btn-block" id="label-<%= category.split.first %>" for="<%= category.split.first %>">
+                 <%= check_box_tag "category[]", category, @params[:category].include?(category), id: category.split.first, class: "category-checkbox", style: 'visibility: hidden' %>
                  <%= render partial: 'components/category_card', locals: { category: category } %>
               </label>
             </li>

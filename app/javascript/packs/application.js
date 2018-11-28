@@ -8,10 +8,24 @@
 // layout file, like app/views/layouts/application.html.erb
 //= require jquery
 
-console.log('Hello World from Webpacker')
 $(document).ready(function(){
-  $(".category-option").click(function(){
-    $(this).toggleClass("active");
-    console.log('test')
+  $('.category-checkbox').each(function () {
+    this.checked ? $(this).parent().addClass("active") : $(this).parent().removeClass("active");
+  });
+
+
+  $(".category-checkbox").click(function(){
+    $(this).parent().toggleClass("active");
   });
 });
+
+// $('input:checkbox').change(function(){
+//     if($(this).is(":checked")) {
+//       $(`#label-${this.id}`).addClass("active");
+//       console.log(`#label-${this.id}`)
+//     } else {
+//       $(`#label-${this.id}`).removeClass("active");
+//       console.log(`#label-${this.id}`)
+//     }
+// });
+
