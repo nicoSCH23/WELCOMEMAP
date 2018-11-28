@@ -1,9 +1,9 @@
 class PagesController < ApplicationController
   def home
-    @categories = Service.distinct.pluck(:category)
+    @categories = Category.all
     @location = "Ile de France, France"
-    @params = params[:category] ? params : {category: @categories, location: @location}
-    @services = Service.search(params)
+    @catids_selected = params[:category_ids] ? params[:category_ids] : @categories.ids
+    @services = Service.search(@catids_selected)
     @markers = @services.map do |service|
       {
         lat: service.latitude,

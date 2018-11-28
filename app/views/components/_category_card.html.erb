@@ -1,6 +1,6 @@
 <div class="" >
-    <%= image_tag "#{category.split.first}.png", height: 25, class: "category-icon" %>
+    <%= cl_image_tag category.icon, height: 25, class: "category-icon" %>
     <span class="category-name">
-      <%= category %>
+      <%= category.name %>
     </span>
 </div>
