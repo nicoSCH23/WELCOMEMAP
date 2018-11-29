@@ -7,11 +7,16 @@
     <div class="col-xs-12 col-md-4">
       <%= form_tag(root_path, method: :get) do %>
       <h4>Location</h4>
+        <div class="searchbar paddingbottom">
+          Services within  <%= select_tag "distance", "<option>1</option><option selected='selected'>5</option><option>10</option>".html_safe %> kms from
+        </div>
         <div class="searchbar">
-          <%= text_field_tag 'location', nil, placeholder: 'Ile de France', size: 30, id: "search-location" %>
+          <%= text_field_tag 'location', nil, placeholder: params[:location], size: 30, id: "search-location" %>
+
+          <%#= text_field_tag 'distance', nil, placeholder: 'Distance?', size: 5, id: "distance" %>
         </div>
       <h4>Categories</h4>
-        <ul>
+        <ul class="filter-list">
           <% @categories.each do |category| %>
             <li>
               <label class="category-option btn btn-chore btn-small btn-block" id="label-<%= category.id %>" for="<%= category.id %>">
@@ -22,14 +27,18 @@
           <% end %>
         </ul>
       <div class="submit-search-container">
-        <%= submit_tag("Search", class: "btn btn-primary") %>
+        <%= submit_tag("Search", class: "btn btn-search btn-primary") %>
       </div>
       <% end %>
     </div>
   </div>
-  <div>
+  <div class="row col-xs-12 col-md-8 container card-presentation">
+    <div>
+      <h4 class="result-title">Results <%= "within #{params[:distance]}kms of #{params[:location]}" if (params[:location].present?&&params[:distance].present?) %></h4>
+    </div>
+
     <% @services.each do |service| %>
-      <%= service.name %>
+      <%= render partial: 'components/service_card', locals: { service: service } %>
     <% end %>
   </div>
 
