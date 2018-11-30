@@ -32,8 +32,9 @@
       <% end %>
     </div>
   </div>
-  <div class="row col-xs-12 col-md-8 container card-presentation">
+  <div class="row col-xs-12 col-md-8 container div-results">
     <div>
+      <button id="print" onclick="printContent('div-results');" >Print</button>
       <h4 class="result-title">Results <%= "within #{params[:distance]}kms of #{params[:location]}" if (params[:location].present?&&params[:distance].present?) %></h4>
     </div>
 

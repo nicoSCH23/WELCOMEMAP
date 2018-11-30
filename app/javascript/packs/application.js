@@ -9,7 +9,8 @@ import "bootstrap";
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 //= require jquery
-console.log("COUCOU")
+
+
 $(document).ready(function(){
   $('.category-checkbox').each(function () {
     this.checked ? $(this).parent().addClass("active") : $(this).parent().removeClass("active");
