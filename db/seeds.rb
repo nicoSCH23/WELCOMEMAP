@@ -12,14 +12,23 @@ services = [[["showers"],{ name: 'Douches Jaures', address: "56 rue de Meaux, 75
     [["food", "clothes"], { name: 'FooMigrants', address: "9 rue Edouard-Jacques, 75014 Paris", phone: "0650166564", hour: "9AM-9PM, Mon-Sat", comment: "Open all year round and free" }]
 ]
 
-categories = [{ name: 'Showers', identif: "showers", icon: 'https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399886/aqsfufl8msyz5qtptuei.png'},
-  { name: "Clothes", identif:"clothes", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399872/uvxxdjtx2gzlum0jlydd.png"},
-  { name: "Legal help", identif:"legal", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399899/Legal.png"},
-  { name: "Food", identif:"food", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399775/laylcmw3ki7mkvmhx4mj.png"}
+categories = [{ name: 'Showers', namefr: "Douches", identif: "showers", icon: 'https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399886/aqsfufl8msyz5qtptuei.png'},
+  { name: "Clothes", namefr: "Vêtements", identif:"clothes", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399872/uvxxdjtx2gzlum0jlydd.png"},
+  { name: "Legal help", namefr: "Aide juridique", identif:"legal", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399899/Legal.png"},
+  { name: "Food", namefr: "Alimentaire", identif:"food", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399775/laylcmw3ki7mkvmhx4mj.png"}
 ]
 
 categories.each do |category|
-  Category.create(category)
+  cat = Category.new()
+  cat.identif = category[:identif]
+  cat.icon = category[:icon]
+  I18n.locale = :en
+  cat.name = category[:name]
+
+  I18n.locale = :fr
+  cat.name = category[:namefr]
+
+  cat.save!
 end
 
 services.each do |service|
