@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+gem 'globalize', git: 'https://github.com/globalize/globalize'
+gem 'activemodel-serializers-xml'
 gem 'jquery-rails'
 gem 'geokit-rails'
 gem 'cloudinary', '~> 1.9.1'

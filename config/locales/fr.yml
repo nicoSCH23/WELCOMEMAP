@@ -1,2 +1,13 @@
 fr:
-  hello: "Hello world"
+  pages:
+    home:
+      location: "Adresse"
+      services_within: "Services dans un rayon de"
+      from: " "
+      categories: "Catégories"
+      filter: "Filtrer"
+      print: "Imprimer"
+      results: "Services"
+      results_within: 'Résultats à %{distance}kms de %{location}'
+      no_results: 'Aucun résultat pour cette recherche'
+
