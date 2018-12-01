@@ -1,7 +1,7 @@
 <script>
   function printContent(el){
     var restorepage = $('body').html();
-    $('#' + el).remove();
+    $('.' + el).remove();
     window.print();
     $('body').empty();
     $('body').html(restorepage);
@@ -11,16 +11,16 @@
 
 <div class="container">
   <div class="row">
-    <ul class="lang-switcher lang-switcher--pill">
+    <ul class="lang-switcher removeForPrint lang-switcher--pill">
         <li><a href="<%= root_path(locale: :en) %>" class="<%= "is-active" if I18n.locale == :en %>">En</a></li>
         <li><a href="<%= root_path(locale: :fr) %>" class="<%= "is-active" if I18n.locale == :fr %>">Fr</a></li>
     </ul>
 
-    <h1>SoliMap</h1>
+    <h1 class="removeForPrint">SoliMap</h1>
   	<div class="col-xs-12 col-md-8" id="map" class="printMe2" data-markers="<%= @markers.to_json %>">
 
     </div>
-    <div class="col-xs-12 col-md-4" id="removeForPrint">
+    <div class="col-xs-12 col-md-4 removeForPrint" >
       <%= form_tag(root_path, method: :get) do %>
       <h4><%= t('.location') %></h4>
         <div class="searchbar paddingbottom">
@@ -48,7 +48,7 @@
   </div>
   <div class="row col-xs-12 col-md-8 container printMe" id="div-results">
     <div class="flexbox">
-      <button id="print" class="btn btn-print btn-success" onclick="printContent('removeForPrint');" ><%= t('.print') %></button>
+      <button id="print" class="removeForPrint btn btn-print btn-success" onclick="printContent('removeForPrint');" ><%= t('.print') %></button>
       <h4 class="result-title">
         <% if (@services.empty?) %>
           <%= t('.no_results') %>
