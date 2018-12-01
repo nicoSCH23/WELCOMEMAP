@@ -27,7 +27,6 @@ categories.each do |category|
 
   I18n.locale = :fr
   cat.name = category[:namefr]
-
   cat.save!
 end
 

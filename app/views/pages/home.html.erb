@@ -11,6 +11,11 @@
 
 <div class="container">
   <div class="row">
+    <ul class="lang-switcher lang-switcher--pill">
+        <li><a href="<%= root_path(locale: :en) %>" class="<%= "is-active" if I18n.locale == :en %>">En</a></li>
+        <li><a href="<%= root_path(locale: :fr) %>" class="<%= "is-active" if I18n.locale == :fr %>">Fr</a></li>
+    </ul>
+
     <h1>SoliMap</h1>
   	<div class="col-xs-12 col-md-8" id="map" class="printMe2" data-markers="<%= @markers.to_json %>">
 
@@ -23,8 +28,6 @@
         </div>
         <div class="searchbar">
           <%= text_field_tag 'location', nil, placeholder: params[:location], id: "search-location" %>
-
-          <%#= text_field_tag 'distance', nil, placeholder: 'Distance?', size: 5, id: "distance" %>
         </div>
       <h4><%= t('.categories') %></h4>
         <ul class="filter-list">
@@ -50,7 +53,7 @@
         <% if (@services.empty?) %>
           <%= t('.no_results') %>
         <% elsif (params[:location].present?&&params[:distance].present?) %>
-        <%= t('.results_within', distance: params[:location], location: params[:location]) %>
+        <%= t('.results_within', distance: params[:distance], location: params[:location]) %>
         <% else %>
         <%= t('.results') %>
         <% end %>
