@@ -19,7 +19,7 @@ categories = [  { name: "Food", namefr: "Alimentaire", identif:"food", icon: "ht
   { name: "Legal help", namefr: "Aide juridique", identif:"legal", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543676529/file.png"},
   { name: "Literacy", namefr: "Alphabétisation", identif:"literacy", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543676343/book.png"},
   { name: "Training", namefr: "Formation", identif:"courses", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543676602/presentation.png"},
-  { name: "Support", namefr: "Accompagnement", identif:"support", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543676952/conversation.png"}
+  { name: "Day Care Center", namefr: "Accueil de jour", identif:"daycare", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543678833/welcome.png"}
 ]
 
 categories.each do |category|
