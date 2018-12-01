@@ -29,6 +29,7 @@
 }
 
 .card-header {
+  display: flex;
   border-bottom: 1px solid lightgray;
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
@@ -38,4 +39,13 @@
   h4 {
     font-weight: bold;
   }
+}
+
+.card-icons {
+  text-align: left;
+  margin-left: 5px;
+}
+
+.card-name {
+  margin: auto;
 }
