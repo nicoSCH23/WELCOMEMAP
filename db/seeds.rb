@@ -12,13 +12,13 @@ services = [[["showers"],{ name: 'Douches Jaures', address: "56 rue de Meaux, 75
     [["food", "clothes"], { name: 'FooMigrants', address: "9 rue Edouard-Jacques, 75014 Paris", phone: "0650166564", hour: "9AM-9PM, Mon-Sat", comment: "Open all year round and free" }]
 ]
 
-categories = [{ name: 'Showers', namefr: "Douches", identif: "showers", icon: 'https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399886/aqsfufl8msyz5qtptuei.png'},
+categories = [  { name: "Food", namefr: "Alimentaire", identif:"food", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399775/laylcmw3ki7mkvmhx4mj.png"},
+  { name: "Health access", namefr: "Accès aux soins", identif:"health", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543673333/first-aid-kit.png"},
+  { name: 'Showers', namefr: "Douches", identif: "showers", icon: 'https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399886/aqsfufl8msyz5qtptuei.png'},
   { name: "Clothes", namefr: "Vêtements", identif:"clothes", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399872/uvxxdjtx2gzlum0jlydd.png"},
   { name: "Legal help", namefr: "Aide juridique", identif:"legal", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543676529/file.png"},
-  { name: "Food", namefr: "Alimentaire", identif:"food", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543399775/laylcmw3ki7mkvmhx4mj.png"},
-  { name: "Health access", namefr: "Accès aux soins", identif:"health", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543673333/first-aid-kit.png"},
   { name: "Literacy", namefr: "Alphabétisation", identif:"literacy", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543676343/book.png"},
-  { name: "Courses", namefr: "Cours", identif:"courses", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543676602/presentation.png"}
+  { name: "Training", namefr: "Formation", identif:"courses", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543676602/presentation.png"},
   { name: "Support", namefr: "Accompagnement", identif:"support", icon: "https://res.cloudinary.com/dy1ezu1aw/image/upload/v1543676952/conversation.png"}
 ]
 
