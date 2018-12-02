@@ -1,54 +1,80 @@
 class ServicesController < ApplicationController
-    before_action :set_service, only: [:show, :edit, :update, :destroy]
-    skip_before_action :authenticate_user!, only: :show
+  before_action :set_service, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: :show
 
-    def index
-        @services = policy_scope(Service).order(created_at: :desc)
-      end
-    end
+  # GET /services
+  # GET /services.json
+  def index
+    @services = Service.all
+  end
 
-    def show
-    end
+  # GET /services/1
+  # GET /services/1.json
+  def show
+  end
 
-    def new
-      @service = Body.new
-      authorize @service
-    end
+  # GET /services/new
+  def new
+    @categories = Category.all
+    @service = Service.new
+    authorize @service
+  end
 
-    def edit
-    end
+  # GET /services/1/edit
+  def edit
+  end
 
-    def update
-      @service.update(body_params)
-      redirect_to dashboard_path
-    end
-
-    def create
-      @service = Body.new(body_params)
-      @service.user = current_user
-      authorize @service
+  # POST /services
+  # POST /services.json
+  def create
+    service_params[:category_ids] = service_params[:category_ids].reject(&:empty?)
+    @service = Service.new(service_params)
+    @service.user = current_user
+    authorize @service
+    respond_to do |format|
       if @service.save
-        redirect_to dashboard_url
+        format.html { redirect_to @service, notice: 'Service was successfully created.' }
+        format.json { render :show, status: :created, location: @service }
       else
-        render :new
+        format.html { render :new }
+        format.json { render json: @service.errors, status: :unprocessable_entity }
       end
-    end
-
-    def destroy
-      @service.destroy
-      redirect_to dashboard_path
-    end
-
-    private
-
-    def body_params
-      # je n'ai pas mis le user id car on devrait le recuperer ailleurs?
-      params.require(:body).permit(:title, :price_per_day, :location, :sex, :description, :photo)
-    end
-
-    def set_body
-      @service = Body.find(params[:id])
-      authorize @service
     end
   end
+
+  # PATCH/PUT /services/1
+  # PATCH/PUT /services/1.json
+  def update
+    respond_to do |format|
+      if @service.update(service_params)
+        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
+        format.json { render :show, status: :ok, location: @service }
+      else
+        format.html { render :edit }
+        format.json { render json: @service.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /services/1
+  # DELETE /services/1.json
+  def destroy
+    @service.destroy
+    respond_to do |format|
+      format.html { redirect_to services_url, notice: 'Service was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_service
+      @service = Service.find(params[:id])
+      authorize @service
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def service_params
+      params.require(:service).permit(:name, :address, :phone, :comment, category_ids: [])
+    end
 end

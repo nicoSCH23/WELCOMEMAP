@@ -1,0 +1,22 @@
+<div class="card-service col-xs-12 col-md-5">
+  <div class="card-header">
+    <div class="card-icons">
+      <% service.categories.each do |cat| %>
+        <%= cl_image_tag cat.icon, height: 14, class: "category-icon" %>
+      <% end %>
+    </div>
+    <div class="card-name">
+      <%= service.name %>
+    </div>
+    <% if policy(service).edit? %>
+      <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, service, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <a href="<%= edit_service_path(service) %>"><i class="far fa-edit"></i></a>
+    <% end %>
+  </div>
+  <div class="card-content">
+    <p> Horaires d’ouverture: <%= service.hour %></p>
+    <p>Tel: <%= service.phone %></p>
+    <p>Address: <%= service.address %></p>
+  </div>
+</div>
+
