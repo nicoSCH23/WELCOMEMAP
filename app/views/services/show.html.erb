@@ -16,18 +16,12 @@
   </div>
   <h1><%= t('.access_point_activities') %></h1>
   <% if @service.activity_slots.any? %>
-    <% @service.activity_slots.each do |activity| %>
-      <div class="activity">
-      <%= t('.activity_title') %>: <%= activity.title %> <br>
-      <%= t('.activity_hours') %>: <%= activity.opening_hours %> <br>
-      <%= t('.activity_price') %>: <%= activity.price %> <br>
-      <%= link_to 'Edit', edit_service_path(activity) %> |
-      <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, activity, method: :delete, data: { confirm: 'Are you sure?' } %> |
-      <%= link_to 'Back', services_path %>
-      </div>
+    <% @service.activity_slots.each do |activity_slot| %>
+      <%= render 'activity_slots/show', activity_slot: activity_slot %>
     <% end %>
   <% else %>
     <%= t('.no_activity') %>
-    <%= link_to t('.new_activity'), new_service_activity_slot_path(@service), class: "btn btn-primary" %>
   <% end %>
+  <h4><%= t('.new_activity') %></h4>
+  <%= render 'activity_slots/form', service: @service, activity_slot: @activity_slot %>
 </div>

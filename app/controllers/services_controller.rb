@@ -11,6 +11,7 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.json
   def show
+    @activity_slot = ActivitySlot.new
   end
 
   # GET /services/new
@@ -75,6 +76,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :address, :phone, :comment)
+      params.require(:service).permit(:name, :address, :phone, :comment, :mail, :link, :ngo_id)
     end
 end
