@@ -1,5 +1,5 @@
-<% (service = activity_slot.service) unless activity_slot.service.nil? %>
-<%= simple_form_for ([service, activity_slot]) do |f| %>
+
+<%= simple_form_for(activity_slot) do |f| %>
   <%= f.input :title, placeholder: "Title"%>
   <%= f.input :opening_hours, placeholder: "Opening Hours"%>
   <%= f.input :activities, placeholder: "Activities"%>

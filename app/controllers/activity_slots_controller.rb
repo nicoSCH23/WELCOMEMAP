@@ -40,7 +40,7 @@ class ActivitySlotsController < ApplicationController
   def update
     respond_to do |format|
       if @activity_slot.update(activity_slot_params)
-        format.html { redirect_to @activity_slot, notice: 'Activity slot was successfully updated.' }
+        format.html { redirect_to services_path, notice: 'Activity slot was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_slot }
       else
         format.html { render :edit }

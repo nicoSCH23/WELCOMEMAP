@@ -8,6 +8,11 @@ fr:
         address: 'Adresse'
         phone: 'Téléphone'
         comment: 'Description'
+  components:
+    service_card_admin:
+      tel: 'Tél'
+      address: 'Adresse'
+      activities: 'Activités'
   services:
     new:
       new_service: "Nouveau Point d'Accès"
@@ -19,6 +24,7 @@ fr:
       activity_title: "Titre"
       activity_hours: "Heures d'ouvertures"
       activity_price: "Prix"
+      back_to_access_points: "Retour aux Points d'Accès"
   pages:
     home:
       location: "Adresse"

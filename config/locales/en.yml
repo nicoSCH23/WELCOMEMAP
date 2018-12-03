@@ -8,6 +8,11 @@ en:
         address: 'Address'
         phone: 'Phone'
         comment: 'Description'
+  components:
+    service_card_admin:
+      tel: 'Phone'
+      address: 'Address'
+      activities: 'Activities'
   services:
     new:
       new_service: "New Access Point"
@@ -19,6 +24,7 @@ en:
       activity_title: "Title"
       activity_hours: "Operating Hours"
       activity_price: "Price"
+      back_to_access_points: "Back to Access Points"
   pages:
     home:
       location: "Location"
