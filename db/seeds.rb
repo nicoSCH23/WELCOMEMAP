@@ -43,9 +43,7 @@ beneficiaries = YAML.load(open(file).read)
 
 beneficiaries["beneficiaries"].each do |beneficiary|
   ben = Beneficiary.new()
-  puts beneficiary
   I18n.locale = :en
-  puts "beneficiary[:name] = #{beneficiary[:name]}"
   ben.name = beneficiary["name"]
   I18n.locale = :fr
   ben.name = beneficiary["namefr"]
@@ -57,8 +55,11 @@ puts "#{Beneficiary.count} Beneficiaries have been created"
 # NGOs
 puts 'Creating Ngos...'
 ngos = [{name: "Médecins du Monde", link: "https://www.medecinsdumonde.org",logo: "https://www.medecinsdumonde.org/sites/default/files/LOGO-MdM_FR_RVB_GRAND-MARGE.png", description: "Présent en France et dans 80 pays, Médecins du Monde est un mouvement international indépendant de militants actifs qui soignent, témoignent et accompagnent le changement social. À partir de nos 388 programmes médicaux innovants et d’un plaidoyer basé sur des faits, nous mettons les personnes exclues et leurs communautés en capacité d’accéder à la santé tout en se battant pour un accès universel aux soins.​"},
-  {name: "France terre d'asile", link: "http://www.france-terre-asile.org/", logo: "http://www.france-terre-asile.org/images/design/logo-ftda.png",description:"L'association France terre d'asile, fondée en décembre 1970, a principalement pour but le maintien et le développement d'une des plus anciennes traditions françaises, celle de l'asile et de garantir en France l'application de toutes les conventions internationales pertinentes. Pour l'association, il s'agit d'aider toutes les personnes en situation de migrations de droit, en particulier celles répondant aux définitions de « réfugié » et « d'apatride » précisées  par  les conventions  internationales, notamment  par  l'article  premier  de  la convention de Genève du 28 juillet 1951 complété par l'article premier du protocole de New-York du 31 janvier 1967 et par la convention de New-York du 30 août 1961, ainsi que les personnes ne bénéficiant pas du statut légal de réfugié ou d'apatride."}
+  {name: "France terre d'asile", link: "http://www.france-terre-asile.org/", logo: "http://www.france-terre-asile.org/images/design/logo-ftda.png",description:"L'association France terre d'asile, fondée en décembre 1970, a principalement pour but le maintien et le développement d'une des plus anciennes traditions françaises, celle de l'asile et de garantir en France l'application de toutes les conventions internationales pertinentes. Pour l'association, il s'agit d'aider toutes les personnes en situation de migrations de droit, en particulier celles répondant aux définitions de « réfugié » et « d'apatride » précisées  par  les conventions  internationales, notamment  par  l'article  premier  de  la convention de Genève du 28 juillet 1951 complété par l'article premier du protocole de New-York du 31 janvier 1967 et par la convention de New-York du 30 août 1961, ainsi que les personnes ne bénéficiant pas du statut légal de réfugié ou d'apatride."},
+  {name: "Les Restos du Coeur", link: "https://www.restosducoeur.org/", logo: "https://www.restosducoeur.org/wp-content/uploads/2016/04/logo.svg",description:"Fondés par Coluche en 1985, les Restos du Cœur est une association loi de 1901, reconnue d’utilité publique, sous le nom officiel de « les Restaurants du Cœur – les Relais du Cœur ». Ils ont pour but « d’aider et d’apporter une assistance bénévole aux personnes démunies, notamment dans le domaine alimentaire par l’accès à des repas gratuits, et par la participation à leur insertion sociale et économique, ainsi qu’à toute action contre la pauvreté sous toutes ses formes »."}
 ]
+
+
 ngos.each do |ngo|
   Ngo.create(ngo)
 end
@@ -67,22 +68,52 @@ puts "#{Ngo.count} ngos have been created"
 
 # Services
 puts 'Creating services...'
-services = [[["showers"], { user_id: 1, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", ngo_id: 1, name: 'Douches Jaures', address: "56 rue de Meaux, 75019 Paris", phone:"0650166564", comment: "Open all year round and free" }],
-    [["showers"], { user_id: 1, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", ngo_id: 2, name: 'BainsGratuit', address: "17 Rue Blomet, 75015 Paris", phone: "0650166564", comment: "Open all year round and free" }],
-    [['legal','showers'], { user_id: 1, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", ngo_id: 2, name: 'InfoMigrants', address: "9 square de Port-Royal, 75013 Paris", phone: "0650166564", comment: "Open all year round and free" }],
-    [["clothes"], { user_id: 1, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", ngo_id: 1, name: 'ClothMigrants', address: "1 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris", phone: "0650166564", comment: "Open all year round and free" }],
-    [["clothes"], { user_id: 1, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", ngo_id: 2, name: 'ClothRestauduCoeur', address: "42 Rue de Clichy, 75009 Paris", phone: "0650166564", comment: "Open all year round and free" }],
-    [["food", "clothes"], { user_id: 1, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", ngo_id: 1, name: 'FooMigrants', address: "9 rue Edouard-Jacques, 75014 Paris", phone: "0650166564", comment: "Open all year round and free" }]
+services = [{ user_id: 1, ngo_id: 1, mail: "ile-de-france@medecinsdumonde.net", link:"https://www.medecinsdumonde.org/fr/contact/ile-de-france", name: 'Médecins de Monde, Paris', address: "15 boulevard de Picpus 75012 Paris", phone:"0143148181" },
+    { user_id: 1, ngo_id: 1, link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", name: 'Médecins de Monde, Plaine-Saint-Denis', address: "8/10 rue des blés - 93210 La Plaine-Saint-Denis", phone: "0155931932" },
+    { user_id: 1, ngo_id: 3, mail: "lestremplins@restosducoeur.org", link:"https://www.restosducoeur.org/associations-departementales/les-tremplins-des-restaurants-du-coeur-relais-du-coeur/", name: 'LES TREMPLINS DES RESTAURANTS DU CŒUR', address: "42 Rue de Clichy, 75009 Paris", phone: "0987335391" },
+    { user_id: 1, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", name: 'ClothMigrants', address: "1 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris", phone: "0650166564" },
+    { user_id: 1, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", name: 'ClothRestauduCoeur', address: "42 Rue de Clichy, 75009 Paris", phone: "0650166564" },
+    { user_id: 1, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", name: 'FooMigrants', address: "9 rue Edouard-Jacques, 75014 Paris", phone: "0650166564" }
 ]
 
 services.each do |service|
-  serv = Service.create(service[1])
-  service[0].each do |cat|
-    serviceCat = ServiceCategory.new
-    serviceCat.service = serv
-    serviceCat.category = Category.where(identif: cat)[0]
-    serviceCat.save
+  serv = Service.create(service)
+end
+puts "#{Service.count} services have been created"
+
+
+# Services
+puts 'Creating activities...'
+activities = [[["showers"], { service_id: 1, title: 'Douches gratuites', opening_hours: "Lundi au Vendredi, de 9h a 13h et de 14h a 18h", appointment: false, price: "0"}],
+    [["showers"], { service_id: 2, title: 'Douches gratuites', opening_hours: "Lundi au Vendredi, de 9h a 13h et de 14h a 18h", appointment: false, price: "0"}],
+    [['legal','showers'], { service_id: 3, title: 'Assistance juridique', opening_hours: "Lundi au Vendredi, de 9h a 13h et de 14h a 18h", appointment: false, price: "10"}],
+    [["clothes"], { service_id: 4, title: 'Vestiaire', opening_hours: "Lundi au Vendredi, de 9h a 13h et de 14h a 18h", appointment: false}],
+    [["clothes"], { service_id: 5, title: 'Vestiaire', opening_hours: "Lundi au Vendredi, de 9h a 13h et de 14h a 18h", appointment: false}],
+    [["daycare"], { service_id: 6, title: 'Vestiaire', opening_hours: "Lundi au Vendredi, de 9h a 13h et de 14h a 18h", appointment: false}],
+    [["food", "clothes"], { service_id: 6, title: 'Distribution alimentaire', opening_hours: "Lundi au Vendredi, de 9h à 13h et de 14h a 18h", appointment: false, price: "0"}]
+]
+
+activities.each_with_index do |activity, index|
+  acti = ActivitySlot.create(activity[1])
+  activity[0].each do |cat|
+    activityCat = ActivityCategory.new
+    activityCat.activity_slot = acti
+    activityCat.category = Category.where(identif: cat)[0]
+    activityCat.save
+  end
+  activityBen = ActivityBeneficiary.new
+  activityBen.beneficiary_id = rand(7..Beneficiary.all.length)
+  activityBen.activity_slot = acti
+  activityBen.save
+
+  if index.odd?
+    activityBen2 = ActivityBeneficiary.new
+    activityBen2.beneficiary_id = rand(1..6)
+    activityBen2.activity_slot = acti
+    activityBen2.save
   end
 end
-puts "#{Service.count} service have been created"
+
+puts "#{ActivitySlot.count} activities have been created"
+puts "#{ActivityBeneficiary.count} beneficiaries have been assigned to activities"
 

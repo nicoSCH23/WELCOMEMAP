@@ -1,4 +1,18 @@
 en:
+  activerecord:
+    models:
+      service: 'Service'
+    attributes:
+      service:
+        name: 'Title'
+        address: 'Address'
+        phone: 'Phone'
+        comment: 'Description'
+  services:
+    new:
+      new_service: "New Access Point"
+    index:
+      new_service: "New Access Point"
   pages:
     home:
       location: "Location"
