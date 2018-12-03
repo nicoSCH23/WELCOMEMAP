@@ -43,9 +43,7 @@ beneficiaries = YAML.load(open(file).read)
 
 beneficiaries["beneficiaries"].each do |beneficiary|
   ben = Beneficiary.new()
-  puts beneficiary
   I18n.locale = :en
-  puts "beneficiary[:name] = #{beneficiary[:name]}"
   ben.name = beneficiary["name"]
   I18n.locale = :fr
   ben.name = beneficiary["namefr"]
