@@ -1,0 +1,6 @@
+users:
+  - first_name: "Alan"
+    last_name: "Turing"
+    email: "alan.turing@42.com"
+    password: "enigma"
+    admin: true
