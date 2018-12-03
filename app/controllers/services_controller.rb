@@ -11,6 +11,7 @@ class ServicesController < ApplicationController
   # GET /services/1
   # GET /services/1.json
   def show
+    @activity_slot = ActivitySlot.new
   end
 
   # GET /services/new
@@ -27,7 +28,6 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
-    service_params[:category_ids] = service_params[:category_ids].reject(&:empty?)
     @service = Service.new(service_params)
     @service.user = current_user
     authorize @service
@@ -36,6 +36,7 @@ class ServicesController < ApplicationController
         format.html { redirect_to @service, notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else
+        Rails.logger.info(@service.errors.inspect)
         format.html { render :new }
         format.json { render json: @service.errors, status: :unprocessable_entity }
       end
@@ -75,6 +76,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :address, :phone, :comment, category_ids: [])
+      params.require(:service).permit(:name, :address, :phone, :comment, :mail, :link, :ngo_id)
     end
 end

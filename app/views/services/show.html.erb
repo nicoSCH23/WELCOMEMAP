@@ -1,4 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1><%= t('.access_point') %></h1>
+    <div class="access-point">
+    <div class="ngo">
+        <img src="<%= @service.ngo.logo %>" alt="logo" height="42"/><h2><%= @service.ngo.name %></h2>
+    </div>
+    <h3><%= @service.name %></h3>
+    <p><%= @service.address %></p>
+    <p><%= @service.phone %></p>
+    <p><%= @service.mail %></p>
+    <p><%= @service.link %></p>
+    <p><%= @service.comment %></p>
 
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+    <%= link_to 'Edit', edit_service_path(@service) %> |
+    <%= link_to 'Back', services_path %>
+  </div>
+  <h1><%= t('.access_point_activities') %></h1>
+  <% if @service.activity_slots.any? %>
+    <% @service.activity_slots.each do |activity_slot| %>
+      <%= render 'activity_slots/show', activity_slot: activity_slot %>
+    <% end %>
+  <% else %>
+    <%= t('.no_activity') %>
+  <% end %>
+  <h4><%= t('.new_activity') %></h4>
+  <%= render 'activity_slots/form', service: @service, activity_slot: @activity_slot %>
+</div>

@@ -1,4 +1,7 @@
-<%= simple_form_for ([service, activity_slot]) do |f| %>
+<% service = @service if @service %>
+<% activity_slot = @activity_slot if @activity_slot %>
+
+<%= simple_form_for [service, activity_slot], remote: true do |f| %>
   <%= f.input :title, placeholder: "Title"%>
   <%= f.input :opening_hours, placeholder: "Opening Hours"%>
   <%= f.input :activities, placeholder: "Activities"%>

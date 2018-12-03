@@ -24,16 +24,14 @@ class ActivitySlotsController < ApplicationController
   # POST /activity_slots
   # POST /activity_slots.json
   def create
+    @service = Service.find(params[:service_id])
     @activity_slot = ActivitySlot.new(activity_slot_params)
-
-    respond_to do |format|
-      if @activity_slot.save
-        format.html { redirect_to @activity_slot, notice: 'Activity slot was successfully created.' }
-        format.json { render :show, status: :created, location: @activity_slot }
-      else
-        format.html { render :new }
-        format.json { render json: @activity_slot.errors, status: :unprocessable_entity }
-      end
+    @activity_slot.service = @service
+    authorize @activity_slot
+    if @activity_slot.save
+      redirect_to service_path(@service)
+    else
+      render 'services/show'
     end
   end
 
@@ -56,7 +54,7 @@ class ActivitySlotsController < ApplicationController
   def destroy
     @activity_slot.destroy
     respond_to do |format|
-      format.html { redirect_to activity_slots_url, notice: 'Activity slot was successfully destroyed.' }
+      format.html { redirect_to services_url, notice: 'Activity slot was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,10 +63,11 @@ class ActivitySlotsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_activity_slot
       @activity_slot = ActivitySlot.find(params[:id])
+      authorize @activity_slot
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_slot_params
-      params.fetch(:activity_slot, {})
+      params.require(:activity_slot).permit(:title, :opening_hours, :activities, :price, :appointment, :start_date, :end_date)
     end
 end
