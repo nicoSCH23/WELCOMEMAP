@@ -12,7 +12,7 @@
 <div class="container">
   <div class="row">
     <ul class="lang-switcher removeForPrint lang-switcher--pill">
-        <li><a href="<%= root_path(locale: :en) %>" class="<%= "is-active" if I18n.locale == :en %>">En</a></li>
+        <li><a href="<%= root_path(locale: :en) %>" class="<%= "is-active" if I18n.locale != :fr %>">En</a></li>
         <li><a href="<%= root_path(locale: :fr) %>" class="<%= "is-active" if I18n.locale == :fr %>">Fr</a></li>
     </ul>
 

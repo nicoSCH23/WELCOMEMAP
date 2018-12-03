@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
+  before_action :authenticate_user!
+  include Pundit
 
   def set_locale
     I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
@@ -7,5 +9,15 @@ class ApplicationController < ActionController::Base
 
   def default_url_options
     { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+  end
+  # Pundit: white-list approach.
+  after_action :verify_authorized, except: :index, unless: :skip_pundit?
+  # after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
+
+  private
+
+  def skip_pundit?
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 end

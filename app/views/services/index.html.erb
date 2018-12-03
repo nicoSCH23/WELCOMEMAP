@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Services</h1>
+  <%= link_to 'New Service', new_service_path, class: "btn btn-primary" %>
+  <div class="row">
+      <% @services.each do |service| %>
+        <%= render partial: 'components/service_card_admin', locals: { service: service } %>
+      <% end %>
+  </div>
+</div>
+

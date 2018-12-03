@@ -1,6 +1,9 @@
 class Service < ApplicationRecord
-  has_many :service_categories
+  belongs_to :user
+  has_many :activity_slots, dependent: :delete_all
+  has_many :service_categories, dependent: :delete_all
   has_many :categories, through: :service_categories
+  accepts_nested_attributes_for :categories
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
   acts_as_mappable :default_units => :kms,
