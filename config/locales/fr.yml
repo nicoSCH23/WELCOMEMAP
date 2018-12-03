@@ -10,9 +10,9 @@ fr:
         comment: 'Description'
   services:
     new:
-      new_service: "Nouveau Service"
+      new_service: "Nouveau Point d'Accès"
     index:
-      new_service: "Nouveau Service"
+      new_service: "Nouveau Point d'Accès"
   pages:
     home:
       location: "Adresse"

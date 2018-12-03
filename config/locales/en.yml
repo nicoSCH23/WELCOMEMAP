@@ -10,9 +10,9 @@ en:
         comment: 'Description'
   services:
     new:
-      new_service: "New Service"
+      new_service: "New Access Point"
     index:
-      new_service: "New Service"
+      new_service: "New Access Point"
   pages:
     home:
       location: "Location"

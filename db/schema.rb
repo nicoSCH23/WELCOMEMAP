@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_093513) do
+ActiveRecord::Schema.define(version: 2018_12_03_105220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activity_beneficiaries", force: :cascade do |t|
+    t.bigint "beneficiary_id"
+    t.bigint "activity_slot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_slot_id"], name: "index_activity_beneficiaries_on_activity_slot_id"
+    t.index ["beneficiary_id"], name: "index_activity_beneficiaries_on_beneficiary_id"
+  end
+
+  create_table "activity_categories", force: :cascade do |t|
+    t.bigint "category_id"
+    t.bigint "activity_slot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_slot_id"], name: "index_activity_categories_on_activity_slot_id"
+    t.index ["category_id"], name: "index_activity_categories_on_category_id"
+  end
 
   create_table "activity_slots", force: :cascade do |t|
     t.bigint "service_id"
@@ -112,6 +130,10 @@ ActiveRecord::Schema.define(version: 2018_12_03_093513) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activity_beneficiaries", "activity_slots"
+  add_foreign_key "activity_beneficiaries", "beneficiaries"
+  add_foreign_key "activity_categories", "activity_slots"
+  add_foreign_key "activity_categories", "categories"
   add_foreign_key "activity_slots", "services"
   add_foreign_key "service_categories", "categories"
   add_foreign_key "service_categories", "services"

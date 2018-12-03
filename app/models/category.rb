@@ -1,5 +1,5 @@
 class Category < ApplicationRecord
-  has_many :service_categories, dependent: :delete_all
-  has_many :services, through: :service_categories
+  has_many :activity_categories, dependent: :delete_all
+  has_many :activity_slots, through: :activity_categories
   translates :name
 end
