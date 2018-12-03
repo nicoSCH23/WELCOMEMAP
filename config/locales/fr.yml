@@ -13,6 +13,12 @@ fr:
       new_service: "Nouveau Point d'Accès"
     index:
       new_service: "Nouveau Point d'Accès"
+    show:
+      access_point: "Point d'Accès"
+      access_point_activities: "Activités de ce Point d'Accès"
+      activity_title: "Titre"
+      activity_hours: "Heures d'ouvertures"
+      activity_price: "Prix"
   pages:
     home:
       location: "Adresse"

@@ -56,7 +56,7 @@ class ActivitySlotsController < ApplicationController
   def destroy
     @activity_slot.destroy
     respond_to do |format|
-      format.html { redirect_to activity_slots_url, notice: 'Activity slot was successfully destroyed.' }
+      format.html { redirect_to services_url, notice: 'Activity slot was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

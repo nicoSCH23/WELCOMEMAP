@@ -1,4 +1,6 @@
 beneficiaries:
+  - name: "Babies"
+    namefr: "Bébés"
   - name: "Minors"
     namefr: "Mineurs"
   - name: "Migrants & Foreigners"
