@@ -1,5 +1,6 @@
 class Service < ApplicationRecord
   belongs_to :user
+  has_many :activity_slots, dependent: :delete_all
   has_many :service_categories, dependent: :delete_all
   has_many :categories, through: :service_categories
   accepts_nested_attributes_for :categories
