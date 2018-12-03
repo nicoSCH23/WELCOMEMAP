@@ -24,9 +24,10 @@ class ActivitySlotsController < ApplicationController
   # POST /activity_slots
   # POST /activity_slots.json
   def create
-    @service = Service.find(params[:service])
-    @activity_slot = Activity_slot.new(activity_slot_params)
+    @service = Service.find(params[:service_id])
+    @activity_slot = ActivitySlot.new(activity_slot_params)
     @activity_slot.service = @service
+    authorize @activity_slot
     if @activity_slot.save
       redirect_to service_path(@service)
     else
@@ -62,6 +63,7 @@ class ActivitySlotsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_activity_slot
       @activity_slot = ActivitySlot.find(params[:id])
+      authorize @activity_slot
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
