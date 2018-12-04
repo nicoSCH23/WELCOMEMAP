@@ -10,8 +10,9 @@
     <p><%= @service.mail %></p>
     <p><%= @service.link %></p>
     <p><%= @service.comment %></p>
-
-    <%= link_to 'Edit', edit_service_path(@service) %> |
+    <% if policy(@service).edit? %>
+      <%= link_to 'Edit', edit_service_path(@service) %> |
+    <% end %>
     <%= link_to 'Back', services_path %>
   </div>
   <h1><%= t('.access_point_activities') %></h1>
@@ -22,6 +23,10 @@
   <% else %>
     <%= t('.no_activity') %>
   <% end %>
-  <h4><%= t('.new_activity') %></h4>
-  <%= render 'activity_slots/form', service: @service, activity_slot: @activity_slot %>
+  <% if policy(@service).edit? %>
+    <h4><%= t('.new_activity') %></h4>
+    <%= render 'activity_slots/form', service: @service, activity_slot: @activity_slot %>
+    <br>
+  <% end %>
+  <%= link_to t('.back_to_access_points'), services_path, class: "btn btn-primary" %>
 </div>

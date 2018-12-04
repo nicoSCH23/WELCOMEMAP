@@ -3,7 +3,7 @@
   <%= t('.activity_title') %>: <%= activity_slot.title %> <br>
   <%= t('.activity_hours') %>: <%= activity_slot.opening_hours %> <br>
   <%= t('.activity_price') %>: <%= activity_slot.price %> <br>
-  <%= link_to 'Edit', edit_service_path(activity_slot) %> |
+  <%= link_to 'Edit', edit_activity_slot_path(activity_slot) %> |
   <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, activity_slot, method: :delete, data: { confirm: 'Are you sure?' } %> |
   <%= link_to 'Back', services_path %>
 </div>
