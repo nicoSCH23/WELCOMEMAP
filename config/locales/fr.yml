@@ -17,6 +17,7 @@ fr:
     new:
       new_service: "Nouveau Point d'Accès"
     index:
+      all_services: "Tous les Points d'Accès"
       new_service: "Nouveau Point d'Accès"
     show:
       access_point: "Point d'Accès"
