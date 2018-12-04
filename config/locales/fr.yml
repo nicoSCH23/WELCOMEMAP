@@ -4,10 +4,16 @@ fr:
       service: 'Service'
     attributes:
       service:
-        name: 'Titre'
+        name: "Nom du Point d'Accès"
         address: 'Adresse'
         phone: 'Téléphone'
         comment: 'Description'
+      ngo: 'Association'
+    attributes:
+      ngo:
+        name: "Nom de l'association"
+        description: 'Description'
+        link: 'Lien'
   components:
     service_card_admin:
       tel: 'Tél'
@@ -16,6 +22,9 @@ fr:
   services:
     new:
       new_service: "Nouveau Point d'Accès"
+      name_placeholder: "Exemple: Restos du Coeur - Jaures"
+      new_program: "Ajouter un Programme à ce Point d'Accès"
+      can_add_later: "Vous pourrez ajouter d'autres Programmes à ce Point d'Accès"
     index:
       all_services: "Tous les Points d'Accès"
       new_service: "Nouveau Point d'Accès"
@@ -26,6 +35,8 @@ fr:
       activity_hours: "Heures d'ouvertures"
       activity_price: "Prix"
       back_to_access_points: "Retour aux Points d'Accès"
+    form:
+      name_placeholder: "Exemple: Restos du Coeur - Jaures"
   pages:
     home:
       location: "Adresse"

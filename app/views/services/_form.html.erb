@@ -8,19 +8,15 @@
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
             <div class="form-group">
               <%= f.label :name %>
-              <%= f.text_field :name, class: 'form-control' %>
+              <%= f.text_field :name, placeholder: t('.name_placeholder'), class: 'form-control' %>
             </div>
             <div class="form-group">
               <%= f.label :address %>
               <%= f.text_field :address, class: 'form-control', id: "search-location" %>
             </div>
-             <div class="form-group">
-              <%= f.label :phone %>
-              <%= f.text_field :phone, class: 'form-control' %>
-            </div>
             <div class="form-group">
               <%= f.label :comment %>
-              <%= f.text_field :comment, class: 'form-control' %>
+              <%= f.text_area :comment, rows: 5, class: 'form-control' %>
             </div>
             <div class="form-group">
               <%= f.association :ngo, input_html: { required: true }  %>
@@ -35,5 +31,7 @@
     </div>
   </div>
 </div>
+
+
 
 

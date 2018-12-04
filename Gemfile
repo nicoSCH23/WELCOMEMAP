@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+gem 'nested_form_fields'
 gem "pundit"
 gem 'devise'
 gem 'flag-icons-rails'

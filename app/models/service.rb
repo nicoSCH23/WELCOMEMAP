@@ -1,12 +1,14 @@
 class Service < ApplicationRecord
   belongs_to :user
-  belongs_to :ngo, required: false
+  belongs_to :ngo, required: true
   has_many :activity_slots, dependent: :delete_all
   has_many :categories, through: :activity_slots
   has_many :beneficiaries, through: :activity_slots
   geocoded_by :address
   validates :name, presence: true
   validates :address, presence: true, uniqueness: { notice: "An Access Point already exists at this address / Un Point d'Accès existe déjà à cette adresse" }
+  accepts_nested_attributes_for :activity_slots
+
 
   after_validation :geocode, if: :will_save_change_to_address?
   acts_as_mappable :default_units => :kms,
