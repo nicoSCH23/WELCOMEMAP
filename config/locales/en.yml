@@ -8,23 +8,38 @@ en:
         address: 'Address'
         phone: 'Phone'
         comment: 'Description'
+      ngo: 'Association'
+    attributes:
+      ngo:
+        name: "Name of the NGO"
+        description: 'Description'
+        link: 'Link'
   components:
+    activity_card:
+      activities: 'Programs'
     service_card_admin:
       tel: 'Phone'
       address: 'Address'
-      activities: 'Activities'
+      activities: 'Programs'
   services:
     new:
       new_service: "New Access Point"
+      name_placeholder: "Example: Restos du Coeur - Jaures"
+      new_program: "Add a Program to this Access Point"
+      can_add_later: "You will be able to add more programs to this Access Point"
     index:
+      all_services: "All Access Points"
       new_service: "New Access Point"
     show:
       access_point: "Access Point"
-      access_point_activities: "Activities of this Access Point"
+      access_point_activities: "Programs of this Access Point"
       activity_title: "Title"
       activity_hours: "Operating Hours"
       activity_price: "Price"
+      new_activity: "Add a Program"
       back_to_access_points: "Back to Access Points"
+    form:
+      name_placeholder: "Example: Restos du Coeur - Jaures"
   pages:
     home:
       location: "Location"

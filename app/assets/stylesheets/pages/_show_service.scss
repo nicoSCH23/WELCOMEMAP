@@ -1,7 +1,3 @@
-.ngo {
-  display: flex;
-}
-
 .access-point {
   background-color: whitesmoke;
   padding: 15px;
@@ -11,4 +7,17 @@
   margin: 10px;
   padding: 10px;
   background-color: aliceblue;
+}
+
+.show-service {
+  h1 {
+    text-align: left;
+  }
+}
+
+.new-activity {
+  border:1px solid lightgray;
+  padding: 10px;
+  border-radius: 5px;
+
 }

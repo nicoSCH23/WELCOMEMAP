@@ -67,8 +67,8 @@ puts "#{Ngo.count} ngos have been created"
 
 # Services
 puts 'Creating services...'
-services = [{ user_id: 1, ngo_id: 1, mail: "ile-de-france@medecinsdumonde.net", link:"https://www.medecinsdumonde.org/fr/contact/ile-de-france", name: 'Médecins de Monde, Paris', address: "15 boulevard de Picpus 75012 Paris", phone:"0143148181" },
-    { user_id: 1, ngo_id: 1, link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", name: 'Médecins de Monde, Plaine-Saint-Denis', address: "8/10 rue des blés - 93210 La Plaine-Saint-Denis", phone: "0155931932" },
+services = [{ user_id: 1, ngo_id: 1, mail: "ile-de-france@medecinsdumonde.net", link:"https://www.medecinsdumonde.org/fr/contact/ile-de-france", name: 'Médecins du Monde, Paris', address: "15 boulevard de Picpus 75012 Paris", phone:"0143148181" },
+    { user_id: 1, ngo_id: 1, link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", name: 'Médecins du Monde, Plaine-Saint-Denis', address: "8/10 rue des blés - 93210 La Plaine-Saint-Denis", phone: "0155931932" },
     { user_id: 1, ngo_id: 3, mail: "lestremplins@restosducoeur.org", link:"https://www.restosducoeur.org/associations-departementales/les-tremplins-des-restaurants-du-coeur-relais-du-coeur/", name: 'LES TREMPLINS DES RESTAURANTS DU CŒUR', address: "42 Rue de Clichy, 75009 Paris", phone: "0987335391" },
     { user_id: 1, ngo_id: 3, link:"http://hauts-de-seine.restosducoeur.org/liste-des-centres/asnieres/", name: 'Restos du Coeur Asnières', address: "4 rue Louis Armand, 92600 Asnières sur Seine", phone: "0967023824" },
     { user_id: 1, ngo_id: 2, mail: "example@ngo.com", link:"https://www.medecinsdumonde.org/fr/contact/auvergne-rhone-alpes-0", name: 'ClothRestauduCoeur', address: "56 Rue de Meaux, 75019 Paris", phone: "0650166564" },

@@ -1,6 +1,9 @@
 <div class="container">
-  <h1>Services</h1>
-  <%= link_to t('.new_service'), new_service_path, class: "btn btn-primary" %>
+  <div class="new-service-div">
+    <%= link_to t('.new_service'), new_service_path, class: "btn btn-warning btn-new-service" %>
+  </div>
+  <h1 class="title-services"><%= t('.all_services') %></h1>
+
   <div class="row">
       <% @services.each do |service| %>
         <%= render partial: 'components/service_card_admin', locals: { service: service } %>

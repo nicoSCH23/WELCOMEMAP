@@ -1,5 +1,25 @@
 .service-form {
   background-color: #F8F9FA;
   padding: 24px;
-  border-radius: 3px;
+  border-radius: 5px;
+  margin: auto;
+  max-width: 650px;
+}
+
+.nested-form-for-activities {
+  background-color: aliceblue;
+  padding: 25px;
+  margin-bottom: 15px;
+  h4 {
+    margin-top: 0px;
+  }
+}
+
+.col-form-label{
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.collection_check_boxes {
+  font-weight: initial;
 }

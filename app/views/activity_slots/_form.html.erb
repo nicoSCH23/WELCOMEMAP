@@ -2,7 +2,7 @@
 <%= simple_form_for ([service, activity_slot]) do |f| %>
   <%= f.input :title, placeholder: "Title"%>
   <%= f.input :opening_hours, placeholder: "Opening Hours"%>
-  <%= f.input :activities, placeholder: "Activities"%>
+  <%= f.association :categories, as: :check_boxes, item_wrapper_tag: :div, item_wrapper_class: "checkbox-inline"  %>
   <%= f.input :price, placeholder: "Price"%>
   <%= f.submit class: "btn btn-warning" %>
 <% end %>
