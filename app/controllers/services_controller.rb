@@ -88,7 +88,7 @@ class ServicesController < ApplicationController
     def create_categories(catids, activity_slot)
       catids.each do |catid|
         activityCat = ActivityCategory.new
-        activityCat.activity_slot = activity_slot
+        activityCat.activity_slot = @service.activity_slots[0]
         activityCat.category = Category.find(catid.to_i)
         activityCat.save!
       end
