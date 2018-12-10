@@ -1,0 +1,18 @@
+<div class="card-activities card-content">
+  <strong><%= t('.activities') %></strong>
+  <ul>
+    <% service.activity_slots.each do |activity_slot| %>
+      <li>
+        <% activity_slot.categories.each do |cat| %>
+          <%= cl_image_tag cat.icon, height: 14, class: "category-icon" %>
+        <% end %>
+        <%= activity_slot.title %> <br>
+        <i><%= activity_slot.opening_hours %></i>
+        <% if policy(service).edit? %>
+          <%= link_to 'Edit', edit_activity_slot_path(activity_slot) %> |
+          <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, activity_slot, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>

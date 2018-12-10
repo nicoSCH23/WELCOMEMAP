@@ -1,8 +1,10 @@
+<div class="container">
+  <%= simple_form_for(activity_slot) do |f| %>
+    <%= f.input :title, placeholder: "Title"%>
+    <%= f.input :opening_hours, placeholder: "Opening Hours"%>
+    <%= f.association :categories, as: :check_boxes, item_wrapper_tag: :div, item_wrapper_class: "checkbox-inline"  %>
+    <%= f.input :price, placeholder: "Price"%>
+    <%= f.submit class: "btn btn-warning" %>   <%= link_to 'Cancel', services_path, class: 'btn btn-primary ml-2' %>
+  <% end %>
 
-<%= simple_form_for(activity_slot) do |f| %>
-  <%= f.input :title, placeholder: "Title"%>
-  <%= f.input :opening_hours, placeholder: "Opening Hours"%>
-  <%= f.input :activities, placeholder: "Activities"%>
-  <%= f.input :price, placeholder: "Price"%>
-  <%= f.submit class: "btn btn-warning" %>
-<% end %>
+</div>

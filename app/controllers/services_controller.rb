@@ -34,6 +34,11 @@ class ServicesController < ApplicationController
     authorize @service
     respond_to do |format|
       if @service.save
+        params[:service][:activity_slots_attributes]["0"][:category_ids].delete("")
+        if params[:service][:activity_slots_attributes]["0"][:category_ids].any?
+          binding.pry
+          create_categories(params[:service][:activity_slots_attributes]["0"][:category_ids], params[:service][:activity_slots_attributes]["0"])
+        end
         format.html { redirect_to @service, notice: 'Service was successfully created.' }
         format.json { render :show, status: :created, location: @service }
       else
@@ -78,5 +83,14 @@ class ServicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
       params.require(:service).permit(:name, :address, :phone, :comment, :mail, :link, :ngo_id, activity_slots_attributes: [:id, :title, :opening_hours, :activities, :price, :appointment, :start_date, :end_date])
+    end
+
+    def create_categories(catids, activity_slot)
+      catids.each do |catid|
+        activityCat = ActivityCategory.new
+        activityCat.activity_slot = activity_slot
+        activityCat.category = Category.find(catid.to_i)
+        activityCat.save!
+      end
     end
 end

@@ -29,6 +29,10 @@ class ActivitySlotsController < ApplicationController
     @activity_slot.service = @service
     authorize @activity_slot
     if @activity_slot.save
+      params[:activity_slot][:category_ids].delete("")
+      if params[:activity_slot][:category_ids].any?
+        create_categories(params[:activity_slot][:category_ids])
+      end
       redirect_to service_path(@service)
     else
       render 'services/show'
@@ -40,6 +44,10 @@ class ActivitySlotsController < ApplicationController
   def update
     respond_to do |format|
       if @activity_slot.update(activity_slot_params)
+        params[:activity_slot][:category_ids].delete("")
+        if params[:activity_slot][:category_ids].any?
+          create_categories(params[:activity_slot][:category_ids])
+        end
         format.html { redirect_to services_path, notice: 'Activity slot was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity_slot }
       else
@@ -69,5 +77,15 @@ class ActivitySlotsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_slot_params
       params.require(:activity_slot).permit(:title, :opening_hours, :activities, :price, :appointment, :start_date, :end_date)
+    end
+
+    def create_categories(catids)
+      @activity_slot.categories.destroy_all
+      catids.each do |catid|
+        activityCat = ActivityCategory.new
+        activityCat.activity_slot = @activity_slot
+        activityCat.category = Category.find(catid.to_i)
+        activityCat.save!
+      end
     end
 end

@@ -15,10 +15,12 @@ fr:
         description: 'Description'
         link: 'Lien'
   components:
+    activity_card:
+      activities: 'Programmes'
     service_card_admin:
       tel: 'Tél'
       address: 'Adresse'
-      activities: 'Activités'
+      activities: 'Programmes'
   services:
     new:
       new_service: "Nouveau Point d'Accès"
@@ -30,10 +32,11 @@ fr:
       new_service: "Nouveau Point d'Accès"
     show:
       access_point: "Point d'Accès"
-      access_point_activities: "Activités de ce Point d'Accès"
+      access_point_activities: "Programmes de ce Point d'Accès"
       activity_title: "Titre"
       activity_hours: "Heures d'ouvertures"
       activity_price: "Prix"
+      new_activity: "Ajouter un Programme"
       back_to_access_points: "Retour aux Points d'Accès"
     form:
       name_placeholder: "Exemple: Restos du Coeur - Jaures"
